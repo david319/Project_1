@@ -7,22 +7,36 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="324.0"
-            prefWidth="372.0" style="-fx-background-color: #141b29;" xmlns="http://javafx.com/javafx/11"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.test.HelloController">
-    <Pane prefHeight="361.0" prefWidth="377.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <PasswordField fx:id="pass_txt" layoutX="108.0" layoutY="178.0" prefHeight="31.0" prefWidth="157.0"
-                       promptText="Contraseña" style="-fx-background-color: #ffffff;"/>
-        <TextField alignment="CENTER" disable="true" editable="false" layoutX="74.0" layoutY="68.0"
-                   promptText="Inicie Sesión">
-            <font>
-                <Font name="System Bold" size="17.0"/>
-            </font>
-        </TextField>
-        <TextField fx:id="txt_user" layoutX="108.0" layoutY="131.0" prefHeight="31.0" prefWidth="157.0"
-                   promptText="Usuario" style="-fx-background-color: #ffffff;"/>
-        <Button fx:id="btn_log" layoutX="147.0" layoutY="240.0" mnemonicParsing="false" prefHeight="38.0"
-                prefWidth="79.0" style="-fx-background-color: #1f4e5a;" text="Login"/>
-    </Pane>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="324.0" prefWidth="372.0" style="-fx-background-color: #141b29;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.test.HelloController">
+   <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+          <Pane fx:id="paneLog" prefHeight="361.0" prefWidth="377.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Button fx:id="BtnLog" layoutX="151.0" layoutY="210.0" mnemonicParsing="false" onMouseClicked="#OnBtnLogClicked" prefHeight="32.0" prefWidth="70.0" text="Login" />
+              <PasswordField fx:id="pass_txt" layoutX="109.0" layoutY="162.0" prefHeight="31.0" prefWidth="157.0" promptText="Contraseña" style="-fx-background-color: #ffffff;" />
+            <Button fx:id="btn_log1" layoutX="150.0" layoutY="257.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="72.0" text="Register">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+              <TextField alignment="CENTER" disable="true" editable="false" layoutX="75.0" layoutY="57.0" promptText="Inicie Sesión">
+                  <font>
+                      <Font name="System Bold" size="17.0" />
+                  </font>
+              </TextField>
+              <TextField fx:id="txt_user" layoutX="109.0" layoutY="117.0" prefHeight="31.0" prefWidth="157.0" promptText="Usuario" style="-fx-background-color: #ffffff;" />
+            <Button fx:id="btn_log2" layoutX="319.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#OnBtnExitClicked" prefHeight="25.0" prefWidth="39.0" text="Exit" />
+          </Pane>
+      </children>
+   </AnchorPane>
+   <AnchorPane fx:id="paneStart" layoutX="-168.0" layoutY="91.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #141b29;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+         <Pane fx:id="startMenu" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #141b29;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+               <Button fx:id="btn_log" layoutX="82.0" layoutY="49.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="209.0" text="ADMINISTRACION DE EVENTOS" />
+               <Button fx:id="btn_log31" layoutX="134.0" layoutY="212.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="105.0" text="REPORTES" />
+               <Button fx:id="btn_log3" layoutX="82.0" layoutY="124.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="209.0" text="ADMINISTRACION DE USUARIOS" />
+            </children>
+         </Pane>
+      </children>
+   </AnchorPane>
 </AnchorPane>
