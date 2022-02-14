@@ -1,7 +1,5 @@
 package com.example.test;
 
-import javafx.scene.control.*;
-
 import java.util.ArrayList;
 
 public class Users {
@@ -15,20 +13,24 @@ public class Users {
         users.add(admin);
     }
 
-    public static void aggUser(String nameC, String user, String pass, int age, String tipeUser) {
-            if (tipeUser.equals("admin")) {
+    public static void aggUser(String nameC, String user, String pass, int age, String typeUser) {
+        switch (typeUser) {
+            case "admin":
                 User user1 = new User(user, pass);
                 user1.setName(nameC);
                 user1.setAge(age);
                 user1.setTipeUser("Admin");
                 users.add(user1);
-            } else if (tipeUser.equals("Contenido")) {
-                User user2 = new User.UserContents(nameC, user, pass, age, tipeUser);
+                break;
+            case "Contenido":
+                User user2 = new User.UserContents(nameC, user, pass, age, typeUser);
                 users.add(user2);
-            } else if (tipeUser.equals("Limitado")) {
-                User user3 = new User.UserLimited(nameC, user, pass, age, tipeUser);
+                break;
+            case "Limitado":
+                User user3 = new User.UserLimited(nameC, user, pass, age, typeUser);
                 users.add(user3);
-            }
+                break;
+        }
     }
 
     public static void listUsers() {
@@ -37,7 +39,7 @@ public class Users {
         }
     }
 
-    public static boolean validLog(String  user, String  pass) {
+    public static boolean validLog(String user, String pass) {
         for (User value : users) {
             if (value.getUser().equals(user) && value.getPass().equals(pass)) {
                 return true;
@@ -46,7 +48,7 @@ public class Users {
         return false;
     }
 
-    public static boolean searchUser(String user){
+    public static boolean searchUser(String user) {
         for (User value : users) {
             if (value.getUser().equals(user)) {
                 return true;

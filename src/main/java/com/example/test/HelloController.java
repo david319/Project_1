@@ -10,37 +10,28 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 
+import static com.example.test.Events.*;
 import static com.example.test.Users.*;
 
 public class HelloController extends Thread {
-    public boolean login = false;
     public boolean reg = false;
+    public boolean regE = false;
     public JFXTextField txt_user;
     public JFXPasswordField pass_txt;
-    public JFXTextField userReg;
-    public JFXTextField nameReg;
-    public JFXTextField passReg;
-    public JFXTextField ageReg;
+    public JFXTextField userReg, nameReg, passReg, ageReg;
+    public JFXTextField IdEvent, TitleE, DescripE, AmountE, Team1, Team2;
+    public DatePicker DateE;
     public Button BtnLog;
-    public Pane paneLog;
-    public Pane paneRegister;
-    public Pane PaneE;
-    public Pane createE;
-    public Pane DeleteE;
-    public Pane EditE;
-    public Pane ShowE;
-    public Pane PaneU;
-    public Pane EditU;
-    public Pane DeleteU;
-    public Pane PaneR;
-    public Pane startMenu;
+    public Pane paneLog, paneRegister, PaneE, createE, DeleteE, EditE, ShowE, PaneU;
+    public Pane EditU, DeleteU, PaneR, startMenu;
     public ComboBox<String> typeUser;
     public ComboBox<String> TypeE;
     public ComboBox<String> TypeD;
     public ComboBox<String> TypeM;
-    public Button btnReg;
+    public Button btnReg, RegE;
 
     public void initialize() {
+        Admin();
         RequiredFieldValidator txtValidator = new RequiredFieldValidator();
         txtValidator.setMessage("Este campo es requerido");
         txt_user.getValidators().add(txtValidator);
@@ -48,11 +39,19 @@ public class HelloController extends Thread {
         userReg.getValidators().add(txtValidator);
         nameReg.getValidators().add(txtValidator);
         passReg.getValidators().add(txtValidator);
-        NumberValidator ageValidator = new NumberValidator();
-        ageValidator.setMessage("Solo números");
-        ageReg.getValidators().add(ageValidator);
-        Admin();
+        IdEvent.getValidators().add(txtValidator);
+        TitleE.getValidators().add(txtValidator);
+        DescripE.getValidators().add(txtValidator);
+        Team1.getValidators().add(txtValidator);
+        Team2.getValidators().add(txtValidator);
+        NumberValidator numberValidator = new NumberValidator();
+        numberValidator.setMessage("Solo números");
+        AmountE.getValidators().add(numberValidator);
+        ageReg.getValidators().add(numberValidator);
         typeUser.setItems(comboTipeUser);
+        TypeE.setItems(comboTypeE);
+        TypeD.setItems(comboTypeD);
+        TypeM.setItems(comboTypeM);
     }
 
     public void ValidateReg() {
@@ -62,9 +61,20 @@ public class HelloController extends Thread {
         ageReg.validate();
     }
 
+    public void ValidateCreateE() {
+        IdEvent.validate();
+        TitleE.validate();
+        DescripE.validate();
+        Team1.validate();
+        Team2.validate();
+        AmountE.validate();
+    }
+
     public void ValidateLog() {
-        txt_user.validate();
-        pass_txt.validate();
+        if (txt_user.getText().isEmpty() || pass_txt.getText().isEmpty()) {
+            txt_user.validate();
+            pass_txt.validate();
+        }
     }
 
     ObservableList<String> comboTipeUser =
@@ -74,28 +84,40 @@ public class HelloController extends Thread {
                     "Limitado"
             );
 
-    public void btn_login() {
+    public boolean btn_login() {
         String user = txt_user.getText();
         String pass = pass_txt.getText();
-        if (!validLog(user, pass)) {
-            login = true;
+        return !validLog(user, pass);
+    }
+
+    public void OnBtnLogClicked() {
+        ValidateLog();
+        if (!btn_login()) {
+            paneLog.setVisible(false);
+            startMenu.setVisible(true);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Usuario o contraseña incorrectos");
+            alert.showAndWait();
         }
-}
+    }
+
+    public void OnBtnRegisterClicked() {
+        PaneU.setVisible(false);
+        paneLog.setVisible(false);
+        paneRegister.setVisible(true);
+    }
 
     public void btnReg() {
         String nameC = nameReg.getText();
         String user = userReg.getText();
         String pass = passReg.getText();
         String age = ageReg.getText();
-        String tipe = typeUser.getValue();
+        String type = typeUser.getValue();
         if (!searchUser(user)) {
-            if (tipe.equals("Admin")) {
-                aggUser(nameC, user, pass, Integer.parseInt(age), tipe);
-            } else if (tipe.equals("Contenido")) {
-                aggUser(nameC, user, pass, Integer.parseInt(age), tipe);
-            } else if (tipe.equals("Limitado")) {
-                aggUser(nameC, user, pass, Integer.parseInt(age), tipe);
-            }
+            aggUser(user, pass, nameC, Integer.parseInt(age), type);
             reg = true;
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
@@ -108,8 +130,8 @@ public class HelloController extends Thread {
 
     public void OnBtnRegClicked() {
         ValidateReg();
-        btnReg();
         if (!reg) {
+            btnReg();
             paneRegister.setVisible(false);
             paneLog.setVisible(true);
         } else {
@@ -121,26 +143,6 @@ public class HelloController extends Thread {
         }
     }
 
-    public void OnBtnLogClicked() {
-        ValidateLog();
-        btn_login();
-        if (!login) {
-            paneLog.setVisible(false);
-            startMenu.setVisible(true);
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Usuario o contraseña incorrectos");
-            alert.showAndWait();
-        }
-    }
-    public void OnBtnRegisterClicked() {
-        PaneU.setVisible(false);
-        paneLog.setVisible(false);
-        paneRegister.setVisible(true);
-    }
-
     public void OnBtnAdminEventsClicked() {
         startMenu.setVisible(false);
         PaneE.setVisible(true);
@@ -150,6 +152,68 @@ public class HelloController extends Thread {
         PaneE.setVisible(false);
         createE.setVisible(true);
     }
+
+    public void RegE() {
+        String Id = IdEvent.getText();
+        String title = TitleE.getText();
+        String descrip = DescripE.getText();
+        String dateE = DateE.getValue().toString();
+        double amount = Double.parseDouble(AmountE.getText());
+        String typeE = TypeE.getValue();
+        String typeD = TypeD.getValue();
+        String team1 = Team1.getText();
+        String team2 = Team2.getText();
+        String typeM = TypeM.getValue();
+        if (!searchEvent(Id)) {
+            createEvent(Id, title, descrip, dateE, typeE, amount, typeD, team1, team2, typeM);
+            regE = true;
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText("Information");
+            alert.setContentText("El evento se ha registrado correctamente");
+            alert.showAndWait();
+        }
+        regE = false;
+    }
+
+    public void OnBtnCreateEventClicked2() {
+        ValidateCreateE();
+        if (!regE) {
+            RegE();
+            createE.setVisible(false);
+            startMenu.setVisible(true);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("El evento ya existe");
+        }
+    }
+
+    ObservableList<String> comboTypeE =
+            FXCollections.observableArrayList(
+                    "Deportivo",
+                    "Musical",
+                    "Religioso"
+            );
+
+    ObservableList<String> comboTypeD =
+            FXCollections.observableArrayList(
+                    "Futbol",
+                    "Beisbol",
+                    "Rugby",
+                    "Tenis"
+            );
+
+    ObservableList<String> comboTypeM =
+            FXCollections.observableArrayList(
+                    "Pop",
+                    "Rock",
+                    "Rap",
+                    "Clásica",
+                    "Reggaetón",
+                    "Otro"
+            );
 
     public void OnBtnDeleteEClicked() {
         PaneE.setVisible(false);
@@ -187,7 +251,7 @@ public class HelloController extends Thread {
     }
 
 
-    public  void OnBtnBackMenuClicked() {
+    public void OnBtnBackMenuClicked() {
         startMenu.setVisible(true);
         PaneR.setVisible(false);
     }

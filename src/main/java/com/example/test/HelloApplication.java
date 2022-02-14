@@ -5,14 +5,10 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
-import java.util.Objects;
 
 public class HelloApplication extends Application {
     private double offsetX;
@@ -46,10 +42,6 @@ public class HelloApplication extends Application {
         stage.show();
 
     }
-
-
-
-
 
     public static void main(String[] args) {
         launch();

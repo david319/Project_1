@@ -3,7 +3,7 @@ package com.example.test;
 public class User {
 
     // Attributes
-    protected String tipeUser;
+    protected String typeUser;
     protected String nameC;
     protected String username;
     protected String password;
@@ -14,7 +14,7 @@ public class User {
         this.username = username;
         this.password = password;
         age = 0;
-        tipeUser = "";
+        typeUser = "";
     }
 
     public String getUser() {
@@ -26,11 +26,11 @@ public class User {
     }
 
     public void setTipeUser(String tipeUser) {
-        this.tipeUser = tipeUser;
+        this.typeUser = tipeUser;
     }
 
     public String getTipeUser() {
-        return tipeUser;
+        return typeUser;
     }
 
     public void setName(String nameC) {
@@ -46,7 +46,7 @@ public class User {
             super(username, password);
             this.nameC = nameC;
             this.age = age;
-            this.tipeUser = tipeUser;
+            this.typeUser = tipeUser;
         }
 
         public String getUser() {
@@ -71,7 +71,7 @@ public class User {
             super(username, password);
             this.nameC = nameC;
             this.age = age;
-            this.tipeUser = tipeUser;
+            this.typeUser = tipeUser;
         }
 
 
@@ -93,7 +93,7 @@ public class User {
     }
 
     public String toString() {
-        return "User: " + username + " Password: " + password + " Tipe User: " + tipeUser + " Name: " + nameC + " Age: " + age;
+        return "User: " + username + " Password: " + password + " Tipe User: " + typeUser + " Name: " + nameC + " Age: " + age;
     }
 
 }

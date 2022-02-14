@@ -6,7 +6,7 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="324.0" prefWidth="372.0" style="-fx-background-color: #141b29;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.test.HelloController">
-    <Pane fx:id="paneLog" prefHeight="361.0" prefWidth="377.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <Pane fx:id="paneLog" prefHeight="361.0" prefWidth="377.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <Button fx:id="btn_log2" layoutX="319.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#OnBtnExitClicked" prefHeight="25.0" prefWidth="39.0" text="Exit" />
         <TextField alignment="CENTER" disable="true" editable="false" layoutX="75.0" layoutY="57.0" promptText="Inicie Sesión">
             <font>
@@ -28,7 +28,7 @@
       <JFXTextField fx:id="passReg" alignment="CENTER" layoutX="97.0" layoutY="162.0" prefHeight="25.0" prefWidth="178.0" promptText="Contraseña" style="-fx-background-color: ffffffff;" />
       <JFXTextField fx:id="ageReg" alignment="CENTER" layoutX="97.0" layoutY="206.0" prefHeight="25.0" prefWidth="178.0" promptText="Edad" style="-fx-background-color: ffffffff;" />
       <Button fx:id="btnReg" layoutX="144.0" layoutY="255.0" mnemonicParsing="false" onMouseClicked="#OnBtnRegClicked" prefHeight="32.0" prefWidth="70.0" text="Registrar" />
-      <JFXComboBox fx:id="tipeUser" focusColor="#f7f7f8" layoutX="112.0" layoutY="14.0" prefHeight="25.0" prefWidth="149.0" promptText="Tipo de Usuario" style="-fx-background-color: ffffff;" unFocusColor="BLACK" viewOrder="3.0" />
+      <JFXComboBox fx:id="typeUser" focusColor="#f7f7f8" layoutX="112.0" layoutY="14.0" prefHeight="25.0" prefWidth="149.0" promptText="Tipo de Usuario" style="-fx-background-color: ffffff;" unFocusColor="BLACK" viewOrder="3.0" />
    </Pane>
    <Pane fx:id="startMenu" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #141b29;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <Button fx:id="adminE" layoutX="82.0" layoutY="49.0" mnemonicParsing="false" onMouseClicked="#OnBtnAdminEventsClicked" prefHeight="38.0" prefWidth="209.0" text="ADMINISTRACION DE EVENTOS">
@@ -84,12 +84,13 @@
       <JFXTextField fx:id="TitleE" layoutX="205.0" layoutY="35.0" promptText="Titulo del Evento" style="-fx-background-color: #b8b5ff;" />
       <JFXTextField fx:id="DescripE" alignment="CENTER" layoutX="16.0" layoutY="90.0" prefHeight="25.0" prefWidth="171.0" promptText="Descripción del Evento" style="-fx-background-color: #b8b5ff;" />
       <JFXTextField fx:id="AmountE" layoutX="34.0" layoutY="137.0" promptText="Monto de Renta" style="-fx-background-color: #b8b5ff;" />
-      <JFXComboBox fx:id="TypeE" layoutX="47.0" layoutY="187.0" prefHeight="25.0" prefWidth="108.0" promptText="Tipo Deporte" style="-fx-background-color: #b8b5ff;" />
+      <JFXComboBox fx:id="TypeD" layoutX="47.0" layoutY="187.0" prefHeight="25.0" prefWidth="108.0" promptText="Tipo Deporte" style="-fx-background-color: #b8b5ff;" />
       <JFXComboBox fx:id="TypeM" layoutX="220.0" layoutY="187.0" prefHeight="25.0" prefWidth="108.0" promptText="Tipo Musica" style="-fx-background-color: #b8b5ff;" />
       <JFXTextField fx:id="Team1" layoutX="34.0" layoutY="227.0" promptText="Nombre Equipo 1" style="-fx-background-color: #b8b5ff;" />
       <JFXTextField fx:id="Team2" layoutX="34.0" layoutY="272.0" promptText="Nombre Equipo 2" style="-fx-background-color: #b8b5ff;" />
-      <ComboBox layoutX="199.0" layoutY="137.0" prefWidth="150.0" promptText="Tipo de Evento" style="-fx-background-color: #b8b5ff;" />
-      <DatePicker layoutX="199.0" layoutY="89.0" prefHeight="28.0" prefWidth="149.0" promptText="Fecha del Evento" style="-fx-background-color: #b8b5ff;" />
+      <ComboBox fx:id="TypeE" layoutX="199.0" layoutY="137.0" prefWidth="150.0" promptText="Tipo de Evento" style="-fx-background-color: #b8b5ff;" />
+      <DatePicker fx:id="DateE" layoutX="199.0" layoutY="89.0" prefHeight="28.0" prefWidth="149.0" promptText="Fecha del Evento" style="-fx-background-color: #b8b5ff;" />
+      <JFXButton fx:id="RegE" layoutX="233.0" layoutY="247.0" mnemonicParsing="false" onMouseClicked="#OnBtnCreateEventClicked2" prefHeight="38.0" prefWidth="79.0" style="-fx-background-color: c6c6c6;" text="Registrar" />
    </Pane>
    <Pane fx:id="DeleteE" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
@@ -120,7 +121,7 @@
          <JFXListView layoutX="10.0" layoutY="171.0" prefHeight="139.0" prefWidth="352.0" />
       </children>
    </Pane>
-   <Pane fx:id="PaneU" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+   <Pane fx:id="PaneU" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <Button fx:id="btn_log" layoutX="107.0" layoutY="59.0" mnemonicParsing="false" onMouseClicked="#OnBtnRegisterClicked" prefHeight="32.0" prefWidth="149.0" text="Crear Usuario">
          <font>
             <Font size="16.0" />
