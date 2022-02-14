@@ -24,8 +24,20 @@ public class HelloController extends Thread {
     public Button BtnLog;
     public Pane paneLog;
     public Pane paneRegister;
+    public Pane PaneE;
+    public Pane createE;
+    public Pane DeleteE;
+    public Pane EditE;
+    public Pane ShowE;
+    public Pane PaneU;
+    public Pane EditU;
+    public Pane DeleteU;
+    public Pane PaneR;
     public Pane startMenu;
-    public ComboBox<String> tipeUser;
+    public ComboBox<String> typeUser;
+    public ComboBox<String> TypeE;
+    public ComboBox<String> TypeD;
+    public ComboBox<String> TypeM;
     public Button btnReg;
 
     public void initialize() {
@@ -40,7 +52,7 @@ public class HelloController extends Thread {
         ageValidator.setMessage("Solo números");
         ageReg.getValidators().add(ageValidator);
         Admin();
-        tipeUser.setItems(comboTipeUser);
+        typeUser.setItems(comboTipeUser);
     }
 
     public void ValidateReg() {
@@ -75,7 +87,7 @@ public class HelloController extends Thread {
         String user = userReg.getText();
         String pass = passReg.getText();
         String age = ageReg.getText();
-        String tipe = tipeUser.getValue();
+        String tipe = typeUser.getValue();
         if (!searchUser(user)) {
             if (tipe.equals("Admin")) {
                 aggUser(nameC, user, pass, Integer.parseInt(age), tipe);
@@ -96,7 +108,6 @@ public class HelloController extends Thread {
 
     public void OnBtnRegClicked() {
         ValidateReg();
-        listUsers();
         btnReg();
         if (!reg) {
             paneRegister.setVisible(false);
@@ -124,10 +135,71 @@ public class HelloController extends Thread {
             alert.showAndWait();
         }
     }
-
     public void OnBtnRegisterClicked() {
+        PaneU.setVisible(false);
         paneLog.setVisible(false);
         paneRegister.setVisible(true);
+    }
+
+    public void OnBtnAdminEventsClicked() {
+        startMenu.setVisible(false);
+        PaneE.setVisible(true);
+    }
+
+    public void OnBtnCreateEventClicked() {
+        PaneE.setVisible(false);
+        createE.setVisible(true);
+    }
+
+    public void OnBtnDeleteEClicked() {
+        PaneE.setVisible(false);
+        DeleteE.setVisible(true);
+    }
+
+    public void OnBtnEditEClicked() {
+        PaneE.setVisible(false);
+        EditE.setVisible(true);
+    }
+
+    public void OnBtnShowEClicked() {
+        PaneE.setVisible(false);
+        ShowE.setVisible(true);
+    }
+
+    public void OnBtnAdminUserClicked() {
+        startMenu.setVisible(false);
+        PaneU.setVisible(true);
+    }
+
+    public void OnBtnEditUClicked() {
+        PaneU.setVisible(false);
+        EditU.setVisible(true);
+    }
+
+    public void OnBtnDeleteUClicked() {
+        PaneU.setVisible(false);
+        DeleteU.setVisible(true);
+    }
+
+    public void OnBtnReportsClicked() {
+        startMenu.setVisible(false);
+        PaneR.setVisible(true);
+    }
+
+
+    public  void OnBtnBackMenuClicked() {
+        startMenu.setVisible(true);
+        PaneR.setVisible(false);
+    }
+
+    public void OnBtnBackMenuClicked2() {
+        startMenu.setVisible(true);
+        PaneU.setVisible(false);
+    }
+
+    public void OnBtnBackMenuClicked3() {
+        startMenu.setVisible(true);
+        PaneE.setVisible(false);
     }
 
     public void OnBtnExitClicked() {
