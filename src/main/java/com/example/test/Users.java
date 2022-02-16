@@ -8,14 +8,16 @@ public class Users {
 
     public static void Admin() {
         String user = "admin";
-        String pass = "supersecreto";
+        String pass = "admin";
+        String typeUser = "Admin";
         User admin = new User(user, pass);
+        admin.setTipeUser(typeUser);
         users.add(admin);
     }
 
     public static void aggUser(String nameC, String user, String pass, int age, String typeUser) {
         switch (typeUser) {
-            case "admin":
+            case "Admin":
                 User user1 = new User(user, pass);
                 user1.setName(nameC);
                 user1.setAge(age);
@@ -32,6 +34,7 @@ public class Users {
                 break;
         }
     }
+
 
     public static void listUsers() {
         for (User value : users) {

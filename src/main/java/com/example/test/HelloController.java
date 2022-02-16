@@ -3,24 +3,33 @@ package com.example.test;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.NumberValidator;
-import javafx.application.Platform;
 import com.jfoenix.validation.RequiredFieldValidator;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 
+import java.util.Objects;
+import java.util.Optional;
+
 import static com.example.test.Events.*;
 import static com.example.test.Users.*;
+
+;
 
 public class HelloController extends Thread {
     public boolean reg = false;
     public boolean regE = false;
+    public String userLogin = "admin";
     public JFXTextField txt_user;
     public JFXPasswordField pass_txt;
-    public JFXTextField userReg, nameReg, passReg, ageReg;
+    public JFXTextField userReg, nameReg, passReg, ageReg, IdSearch, idDelete, txtE;
     public JFXTextField IdEvent, TitleE, DescripE, AmountE, Team1, Team2;
-    public DatePicker DateE;
+    public JFXTextField editT, editD, editM, editT1, editT2, aggIntM, aggP, aggP1, aggP2;
+    public DatePicker DateE, newD;
+    public ListView<String> eShow;
+    public ListView<String> editShow;
     public Button BtnLog;
     public Pane paneLog, paneRegister, PaneE, createE, DeleteE, EditE, ShowE, PaneU;
     public Pane EditU, DeleteU, PaneR, startMenu;
@@ -28,10 +37,12 @@ public class HelloController extends Thread {
     public ComboBox<String> TypeE;
     public ComboBox<String> TypeD;
     public ComboBox<String> TypeM;
-    public Button btnReg, RegE;
+    public Button btnReg, RegE, showE, deleteE, editE, update, mostrarBack, editBack;
 
     public void initialize() {
         Admin();
+        eventDefecto();
+        userLogin();
         RequiredFieldValidator txtValidator = new RequiredFieldValidator();
         txtValidator.setMessage("Este campo es requerido");
         txt_user.getValidators().add(txtValidator);
@@ -90,9 +101,28 @@ public class HelloController extends Thread {
         return !validLog(user, pass);
     }
 
+    public void userLogin() {
+        for (User u : users) {
+            if (u.getUser().equals(txt_user.getText()) && u.getPass().equals(pass_txt.getText())) {
+                if (u.getTipeUser().equals("Admin")) {
+                    userLogin = "Admin";
+                } else if (u.getTipeUser().equals("Contenido")) {
+                    userLogin = "Contenido";
+                }
+            }
+        }
+    }
+
+    public void userLog() {
+        if (validLog(txt_user.getText(), pass_txt.getText())) {
+            userLogin = txt_user.getText();
+        }
+    }
+
     public void OnBtnLogClicked() {
         ValidateLog();
         if (!btn_login()) {
+            userLog();
             paneLog.setVisible(false);
             startMenu.setVisible(true);
         } else {
@@ -138,7 +168,7 @@ public class HelloController extends Thread {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Error");
-            alert.setContentText("El usuario ya existe1");
+            alert.setContentText("El usuario ya existe");
             alert.showAndWait();
         }
     }
@@ -164,9 +194,8 @@ public class HelloController extends Thread {
         String team1 = Team1.getText();
         String team2 = Team2.getText();
         String typeM = TypeM.getValue();
-        if (!searchEvent(Id)) {
-            createEvent(Id, title, descrip, dateE, typeE, amount, typeD, team1, team2, typeM);
-            regE = true;
+        if (searchEvent(Id, userLogin)) {
+            createEvent(Id, title, descrip, dateE, typeE, amount, typeD, team1, team2, typeM, userLogin);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
             alert.setHeaderText("Information");
@@ -188,6 +217,73 @@ public class HelloController extends Thread {
             alert.setHeaderText("Error");
             alert.setContentText("El evento ya existe");
         }
+    }
+
+    public void OnBtnEditShowClicked() {
+        String id = txtE.getText();
+        if (searchEvent(id, userLogin)) {
+            if (Objects.equals(userLogin, "admin")) {
+                editShow.getItems().setAll(String.valueOf(eventsA.toString()));
+            } else if (Objects.equals(userLogin, "contenido")) {
+                editShow.getItems().setAll(String.valueOf(eventsC.toString()));
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("El evento no existe");
+            alert.showAndWait();
+        }
+    }
+
+    public void editEvent(){
+        String id = txtE.getText();
+        String title = editT.getText();
+        String descrip = editE.getText();
+        String dateE = newD.getValue().toString();
+        String typeE = TypeE.getValue();
+        String typeD = TypeD.getValue();
+        String typeM = TypeM.getValue();
+        double amount = Double.parseDouble(editM.getText());
+        String team1 = editT1.getText();
+        String team2 = editT2.getText();
+        String inteB = aggIntM.getText();
+        String playerT1 = aggP1.getText();
+        String playerT2 = aggP2.getText();
+        String peopleR = aggP.getText();
+        if (searchEvent(id, userLogin)) {
+            if (Objects.equals(userLogin, "admin")) {
+                if (Objects.equals(getEventType(id, userLogin), "Deportivo")) {
+                    for (int i = 0; i < eventsA.size(); i++) {
+                        if (Objects.equals(eventsA.get(i).getId(), id)) {
+                            eventsA.set(eventsA.indexOf(eventsA.get(i)), new EventD(id, title, descrip, dateE, typeE, amount, typeD, team1, team2));
+                            eventsA.get(i).setJugadores1(playerT1);
+                            eventsA.get(i).setJugadores2(playerT2);
+                        }
+                    }
+                } else if (Objects.equals(typeE, "Musical")) {
+                    for (int i = 0; i < eventsA.size(); i++) {
+                        if (Objects.equals(eventsA.get(i).getId(), id)) {
+                            eventsA.set(eventsA.indexOf(eventsA.get(i)), new EventM(id, title, descrip, dateE, typeE, amount, typeM));
+                            eventsA.get(i).setpeopleM(inteB);
+                        }
+                    }
+                } else if (Objects.equals(typeE, "Religioso")) {
+                    for (int i = 0; i < eventsA.size(); i++) {
+                        if (Objects.equals(eventsA.get(i).getId(), id)) {
+                            eventsA.set(eventsA.indexOf(eventsA.get(i)), new EventR(id, title, descrip, dateE, typeE, amount));
+                            eventsA.get(i).setpeopleR(peopleR);
+                        }
+                    }
+                }
+            }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText("Information");
+            alert.setContentText("El evento se ha editado correctamente");
+            alert.showAndWait();
+        }
+        regE = false;
     }
 
     ObservableList<String> comboTypeE =
@@ -220,15 +316,99 @@ public class HelloController extends Thread {
         DeleteE.setVisible(true);
     }
 
+    public void OnBtnDeleteEClicked2() {
+        String Id = idDelete.getText();
+        if (searchEvent(Id, userLogin)) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText("Confirmation");
+            alert.setContentText("¿Está seguro de eliminar el evento?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                alert2.setTitle("Information");
+                alert2.setHeaderText("Information");
+                alert2.setContentText("El evento se ha eliminado correctamente");
+                alert2.showAndWait();
+                DeleteE.setVisible(false);
+                startMenu.setVisible(true);
+                DeleteE(Id, userLogin);
+            } else {
+                DeleteE.setVisible(false);
+                PaneE.setVisible(true);
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("El evento no existe");
+            alert.showAndWait();
+        }
+    }
+
+    public void OnBtneditBackClicked() {
+        EditE.setVisible(false);
+        PaneE.setVisible(true);
+    }
+
     public void OnBtnEditEClicked() {
         PaneE.setVisible(false);
         EditE.setVisible(true);
+    }
+
+
+
+
+    public void OnBtnEditEClicked2() {
+        String id = txtE.getText();
+        if (searchEvent(id, userLogin)) {
+            if (Objects.equals(userLogin, "admin")) {
+                eShow.getItems().setAll(String.valueOf(eventsA.toString()));
+                editShow.getItems().setAll(String.valueOf(eventsA.toString()));
+            } else if (Objects.equals(userLogin, "contenido")) {
+                eShow.getItems().setAll(String.valueOf(eventsC.toString()));
+                editShow.getItems().setAll(String.valueOf(eventsC.toString()));
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("El evento no existe");
+            alert.showAndWait();
+        }
+    }
+
+    public void showE() {
+        String id = IdSearch.getText();
+        if (showEvents(id, userLogin)) {
+            if (Objects.equals(userLogin, "admin")) {
+                eShow.getItems().setAll(String.valueOf(eventsA.toString()));
+            } else if (Objects.equals(userLogin, "contenido")) {
+                eShow.getItems().setAll(String.valueOf(eventsC.toString()));
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("El evento no existe");
+            alert.showAndWait();
+        }
+    }
+
+    public void OnBtnmostrarBackClicked() {
+        ShowE.setVisible(false);
+        PaneE.setVisible(true);
     }
 
     public void OnBtnShowEClicked() {
         PaneE.setVisible(false);
         ShowE.setVisible(true);
     }
+
+    public void OnBtnShowEClicked2() {
+        showE();
+    }
+
 
     public void OnBtnAdminUserClicked() {
         startMenu.setVisible(false);

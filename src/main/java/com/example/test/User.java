@@ -42,11 +42,11 @@ public class User {
     }
 
     public static class UserContents extends User {
-        public UserContents(String nameC, String username, String password, int age, String tipeUser) {
+        public UserContents(String nameC, String username, String password, int age, String typeUser) {
             super(username, password);
             this.nameC = nameC;
             this.age = age;
-            this.typeUser = tipeUser;
+            this.typeUser = typeUser;
         }
 
         public String getUser() {
@@ -93,7 +93,7 @@ public class User {
     }
 
     public String toString() {
-        return "User: " + username + " Password: " + password + " Tipe User: " + typeUser + " Name: " + nameC + " Age: " + age;
+        return "User: " + username + " Password: " + password + " Type User: " + typeUser + " Name: " + nameC + " Age: " + age;
     }
 
 }

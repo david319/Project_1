@@ -5,172 +5,213 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="324.0" prefWidth="372.0" style="-fx-background-color: #141b29;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.test.HelloController">
-    <Pane fx:id="paneLog" prefHeight="361.0" prefWidth="377.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <Button fx:id="btn_log2" layoutX="319.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#OnBtnExitClicked" prefHeight="25.0" prefWidth="39.0" text="Exit" />
-        <TextField alignment="CENTER" disable="true" editable="false" layoutX="75.0" layoutY="57.0" promptText="Inicie Sesión">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="378.0" prefWidth="565.0" style="-fx-background-color: #141b29;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.test.HelloController">
+    <Pane fx:id="paneLog" prefHeight="361.0" prefWidth="377.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Button fx:id="btn_log2" layoutX="506.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#OnBtnExitClicked" prefHeight="25.0" prefWidth="39.0" text="Exit" />
+        <TextField alignment="CENTER" disable="true" editable="false" layoutX="170.0" layoutY="56.0" promptText="Inicie Sesión">
             <font>
                 <Font name="System Bold" size="17.0" />
             </font>
         </TextField>
-        <JFXTextField fx:id="txt_user" layoutX="109.0" layoutY="117.0" prefHeight="31.0" prefWidth="157.0" promptText="Usuario" style="-fx-background-color: #ffffff;" />
-        <JFXPasswordField fx:id="pass_txt" layoutX="109.0" layoutY="171.0" prefHeight="31.0" prefWidth="157.0" promptText="Contraseña" style="-fx-background-color: #ffffff;" />
-      <Button fx:id="BtnLog" layoutX="151.0" layoutY="223.0" mnemonicParsing="false" onMouseClicked="#OnBtnLogClicked" prefHeight="32.0" prefWidth="70.0" text="Login" />
-      <Button fx:id="btn_log1" layoutX="150.0" layoutY="270.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#OnBtnRegisterClicked" prefHeight="24.0" prefWidth="72.0" text="Register">
+        <JFXTextField fx:id="txt_user" layoutX="204.0" layoutY="121.0" prefHeight="31.0" prefWidth="157.0" promptText="Usuario" style="-fx-background-color: #ffffff;" />
+        <JFXPasswordField fx:id="pass_txt" layoutX="204.0" layoutY="174.0" prefHeight="31.0" prefWidth="157.0" promptText="Contraseña" style="-fx-background-color: #ffffff;" />
+        <Button fx:id="BtnLog" layoutX="237.0" layoutY="231.0" mnemonicParsing="false" onMouseClicked="#OnBtnLogClicked" prefHeight="32.0" prefWidth="92.0" text="Login" />
+        <Button fx:id="btn_log1" layoutX="229.0" layoutY="281.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#OnBtnRegisterClicked" prefHeight="25.0" prefWidth="108.0" text="Register">
+            <font>
+                <Font size="11.0" />
+            </font>
+        </Button>
+    </Pane>
+    <Pane fx:id="paneRegister" prefHeight="343.0" prefWidth="394.0" style="-fx-background-color: #141b29;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <JFXTextField fx:id="nameReg" alignment="CENTER" layoutX="61.0" layoutY="127.0" prefHeight="32.0" prefWidth="197.0" promptText="Nombre Completo" style="-fx-background-color: ffffffff;" />
+        <JFXTextField fx:id="userReg" alignment="CENTER" layoutX="318.0" layoutY="129.0" prefHeight="28.0" prefWidth="178.0" promptText="Nombre de Usuario" style="-fx-background-color: ffffffff;" />
+        <JFXTextField fx:id="passReg" alignment="CENTER" layoutX="65.0" layoutY="198.0" prefHeight="28.0" prefWidth="189.0" promptText="Contraseña" style="-fx-background-color: ffffffff;" />
+        <JFXTextField fx:id="ageReg" alignment="CENTER" layoutX="318.0" layoutY="196.0" prefHeight="32.0" prefWidth="178.0" promptText="Edad" style="-fx-background-color: ffffffff;" />
+        <Button fx:id="btnReg" layoutX="232.0" layoutY="271.0" mnemonicParsing="false" onMouseClicked="#OnBtnRegClicked" prefHeight="40.0" prefWidth="102.0" text="Registrar" />
+        <JFXComboBox fx:id="typeUser" focusColor="#f7f7f8" layoutX="213.0" layoutY="82.0" prefHeight="25.0" prefWidth="141.0" promptText="Tipo de Usuario" style="-fx-background-color: ffffff;" unFocusColor="BLACK" viewOrder="3.0" />
+      <Button fx:id="btnReg1" disable="true" layoutX="188.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#OnBtnRegClicked" prefHeight="40.0" prefWidth="189.0" style="-fx-background-color: ffffffff;" text="Formulario de Registro" />
+    </Pane>
+    <Pane fx:id="startMenu" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #141b29;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Button fx:id="adminE" layoutX="36.0" layoutY="103.0" mnemonicParsing="false" onMouseClicked="#OnBtnAdminEventsClicked" prefHeight="38.0" prefWidth="209.0" text="ADMINISTRACION DE EVENTOS">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </Button>
+        <Button fx:id="adminUsers" layoutX="325.0" layoutY="103.0" mnemonicParsing="false" onMouseClicked="#OnBtnAdminUserClicked" prefHeight="38.0" prefWidth="209.0" text="ADMINISTRACION DE USUARIOS">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </Button>
+        <Button fx:id="reports" layoutX="178.0" layoutY="170.0" mnemonicParsing="false" onMouseClicked="#OnBtnReportsClicked" prefHeight="38.0" prefWidth="209.0" text="REPORTES">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </Button>
+        <Button fx:id="btn_log21" layoutX="178.0" layoutY="255.0" mnemonicParsing="false" onMouseClicked="#OnBtnExitClicked" prefHeight="32.0" prefWidth="209.0" text="Exit">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+      <Button fx:id="adminE1" disable="true" layoutX="178.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#OnBtnAdminEventsClicked" prefHeight="38.0" prefWidth="209.0" style="-fx-background-color: ffffff;" text="Menu Principal">
          <font>
-            <Font size="11.0" />
+            <Font size="13.0" />
          </font>
       </Button>
     </Pane>
-   <Pane fx:id="paneRegister" layoutY="7.0" prefHeight="343.0" prefWidth="394.0" style="-fx-background-color: #141b29;" visible="false" AnchorPane.bottomAnchor="-7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="7.0">
-      <JFXTextField fx:id="nameReg" alignment="CENTER" layoutX="97.0" layoutY="66.0" prefHeight="25.0" prefWidth="178.0" promptText="Nombre Completo" style="-fx-background-color: ffffffff;" />
-      <JFXTextField fx:id="userReg" alignment="CENTER" layoutX="97.0" layoutY="115.0" prefHeight="25.0" prefWidth="178.0" promptText="Nombre de Usuario" style="-fx-background-color: ffffffff;" />
-      <JFXTextField fx:id="passReg" alignment="CENTER" layoutX="97.0" layoutY="162.0" prefHeight="25.0" prefWidth="178.0" promptText="Contraseña" style="-fx-background-color: ffffffff;" />
-      <JFXTextField fx:id="ageReg" alignment="CENTER" layoutX="97.0" layoutY="206.0" prefHeight="25.0" prefWidth="178.0" promptText="Edad" style="-fx-background-color: ffffffff;" />
-      <Button fx:id="btnReg" layoutX="144.0" layoutY="255.0" mnemonicParsing="false" onMouseClicked="#OnBtnRegClicked" prefHeight="32.0" prefWidth="70.0" text="Registrar" />
-      <JFXComboBox fx:id="typeUser" focusColor="#f7f7f8" layoutX="112.0" layoutY="14.0" prefHeight="25.0" prefWidth="149.0" promptText="Tipo de Usuario" style="-fx-background-color: ffffff;" unFocusColor="BLACK" viewOrder="3.0" />
-   </Pane>
-   <Pane fx:id="startMenu" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #141b29;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <Button fx:id="adminE" layoutX="82.0" layoutY="49.0" mnemonicParsing="false" onMouseClicked="#OnBtnAdminEventsClicked" prefHeight="38.0" prefWidth="209.0" text="ADMINISTRACION DE EVENTOS">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Button>
-      <Button fx:id="adminUsers" layoutX="82.0" layoutY="114.0" mnemonicParsing="false" onMouseClicked="#OnBtnAdminUserClicked" prefHeight="38.0" prefWidth="209.0" text="ADMINISTRACION DE USUARIOS">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Button>
-      <Button fx:id="reports" layoutX="82.0" layoutY="179.0" mnemonicParsing="false" onMouseClicked="#OnBtnReportsClicked" prefHeight="38.0" prefWidth="209.0" text="REPORTES">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Button>
-      <Button fx:id="btn_log21" layoutX="82.0" layoutY="242.0" mnemonicParsing="false" onMouseClicked="#OnBtnExitClicked" prefHeight="32.0" prefWidth="209.0" text="Exit">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-   </Pane>
-   <Pane fx:id="PaneE" prefHeight="324.0" prefWidth="372.0" visible="false">
-      <Button fx:id="createEv" layoutX="112.0" layoutY="30.0" mnemonicParsing="false" onMouseClicked="#OnBtnCreateEventClicked" prefHeight="32.0" prefWidth="149.0" text="Crear Evento">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <Button fx:id="deleteE" layoutX="112.0" layoutY="87.0" mnemonicParsing="false" onMouseClicked="#OnBtnDeleteEClicked" prefHeight="32.0" prefWidth="149.0" text="Eliminar Evento">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <Button fx:id="editE" layoutX="112.0" layoutY="145.0" mnemonicParsing="false" onMouseClicked="#OnBtnEditEClicked" prefHeight="32.0" prefWidth="149.0" text="Editar Evento">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <Button fx:id="showE" layoutX="112.0" layoutY="201.0" mnemonicParsing="false" onMouseClicked="#OnBtnShowEClicked" prefHeight="32.0" prefWidth="149.0" text="Ver Evento">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <Button fx:id="backM" layoutX="112.0" layoutY="253.0" mnemonicParsing="false" onMouseClicked="#OnBtnBackMenuClicked3" prefHeight="32.0" prefWidth="149.0" text="Regresar al menu">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-   </Pane>
-   <Pane fx:id="createE" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <JFXTextField fx:id="IdEvent" layoutX="34.0" layoutY="35.0" promptText="ID Evento" style="-fx-background-color: #b8b5ff;" />
-      <JFXTextField fx:id="TitleE" layoutX="205.0" layoutY="35.0" promptText="Titulo del Evento" style="-fx-background-color: #b8b5ff;" />
-      <JFXTextField fx:id="DescripE" alignment="CENTER" layoutX="16.0" layoutY="90.0" prefHeight="25.0" prefWidth="171.0" promptText="Descripción del Evento" style="-fx-background-color: #b8b5ff;" />
-      <JFXTextField fx:id="AmountE" layoutX="34.0" layoutY="137.0" promptText="Monto de Renta" style="-fx-background-color: #b8b5ff;" />
-      <JFXComboBox fx:id="TypeD" layoutX="47.0" layoutY="187.0" prefHeight="25.0" prefWidth="108.0" promptText="Tipo Deporte" style="-fx-background-color: #b8b5ff;" />
-      <JFXComboBox fx:id="TypeM" layoutX="220.0" layoutY="187.0" prefHeight="25.0" prefWidth="108.0" promptText="Tipo Musica" style="-fx-background-color: #b8b5ff;" />
-      <JFXTextField fx:id="Team1" layoutX="34.0" layoutY="227.0" promptText="Nombre Equipo 1" style="-fx-background-color: #b8b5ff;" />
-      <JFXTextField fx:id="Team2" layoutX="34.0" layoutY="272.0" promptText="Nombre Equipo 2" style="-fx-background-color: #b8b5ff;" />
-      <ComboBox fx:id="TypeE" layoutX="199.0" layoutY="137.0" prefWidth="150.0" promptText="Tipo de Evento" style="-fx-background-color: #b8b5ff;" />
-      <DatePicker fx:id="DateE" layoutX="199.0" layoutY="89.0" prefHeight="28.0" prefWidth="149.0" promptText="Fecha del Evento" style="-fx-background-color: #b8b5ff;" />
-      <JFXButton fx:id="RegE" layoutX="233.0" layoutY="247.0" mnemonicParsing="false" onMouseClicked="#OnBtnCreateEventClicked2" prefHeight="38.0" prefWidth="79.0" style="-fx-background-color: c6c6c6;" text="Registrar" />
-   </Pane>
-   <Pane fx:id="DeleteE" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <children>
-         <JFXTextField alignment="CENTER" layoutX="97.0" layoutY="138.0" prefHeight="35.0" prefWidth="178.0" promptText="Ingrese Codigo del Evento" style="-fx-background-color: #b8b5ff;" />
-         <JFXTextField alignment="CENTER" disable="true" editable="false" layoutX="80.0" layoutY="59.0" promptText="Eliminar Evento" style="-fx-background-color: ffffff;">
+    <Pane fx:id="PaneE" prefHeight="324.0" prefWidth="372.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Button fx:id="createEv" layoutX="102.0" layoutY="93.0" mnemonicParsing="false" onMouseClicked="#OnBtnCreateEventClicked" prefHeight="32.0" prefWidth="149.0" text="Crear Evento">
             <font>
-               <Font size="19.0" />
+                <Font size="16.0" />
             </font>
-         </JFXTextField>
-         <JFXButton layoutX="135.0" layoutY="206.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="102.0" style="-fx-background-color: ffffff;" text="Eliminar">
+        </Button>
+        <Button fx:id="deleteE" layoutX="310.0" layoutY="93.0" mnemonicParsing="false" onMouseClicked="#OnBtnDeleteEClicked" prefHeight="32.0" prefWidth="149.0" text="Eliminar Evento">
             <font>
-               <Font size="16.0" />
+                <Font size="16.0" />
             </font>
-         </JFXButton>
-      </children>
-   </Pane>
-   <Pane fx:id="EditE" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <children>
-         <JFXTextField alignment="CENTER" layoutX="97.0" layoutY="55.0" prefHeight="31.0" prefWidth="178.0" promptText="Ingrese el Codigo del Evento" style="-fx-background-color: #b8b5ff;" />
-         <JFXListCell layoutX="6.0" layoutY="150.0" prefHeight="160.0" prefWidth="360.0" />
-         <JFXButton layoutX="147.0" layoutY="103.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="79.0" style="-fx-background-color: c6c6c6;" text="Buscar" />
-      </children>
-   </Pane>
-   <Pane fx:id="ShowE" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <children>
-         <JFXButton layoutX="150.0" layoutY="120.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="72.0" style="-fx-background-color: c6c6c6;" text="Buscar" />
-         <JFXTextField alignment="CENTER" layoutX="97.0" layoutY="64.0" prefHeight="31.0" prefWidth="178.0" promptText="Ingrese el Codigo del Evento" style="-fx-background-color: #b8b5ff;" />
-         <JFXListView layoutX="10.0" layoutY="171.0" prefHeight="139.0" prefWidth="352.0" />
-      </children>
-   </Pane>
-   <Pane fx:id="PaneU" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <Button fx:id="btn_log" layoutX="107.0" layoutY="59.0" mnemonicParsing="false" onMouseClicked="#OnBtnRegisterClicked" prefHeight="32.0" prefWidth="149.0" text="Crear Usuario">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <Button fx:id="btn_log3" layoutX="107.0" layoutY="118.0" mnemonicParsing="false" onMouseClicked="#OnBtnEditUClicked" prefHeight="32.0" prefWidth="149.0" text="Editar Usuario">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <Button fx:id="btn_log31" layoutX="107.0" layoutY="180.0" mnemonicParsing="false" onMouseClicked="#OnBtnDeleteUClicked" prefHeight="32.0" prefWidth="149.0" text="Borrar Usuario">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <Button fx:id="btn_log4" layoutX="107.0" layoutY="238.0" mnemonicParsing="false" onMouseClicked="#OnBtnBackMenuClicked2" prefHeight="32.0" prefWidth="149.0" text="Regresar al menu">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-   </Pane>
-   <Pane fx:id="EditU" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <children>
-         <JFXButton layoutX="147.0" layoutY="119.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="79.0" style="-fx-background-color: c6c6c6;" text="Button" />
-         <JFXTextField alignment="CENTER" layoutX="102.0" layoutY="68.0" promptText="Ingrese el username" style="-fx-background-color: #b8b5ff;">
+        </Button>
+        <Button fx:id="editE" layoutX="102.0" layoutY="172.0" mnemonicParsing="false" onMouseClicked="#OnBtnEditEClicked" prefHeight="32.0" prefWidth="149.0" text="Editar Evento">
             <font>
-               <Font size="15.0" />
+                <Font size="16.0" />
             </font>
-         </JFXTextField>
-         <JFXListView layoutX="14.0" layoutY="162.0" prefHeight="152.0" prefWidth="346.0" />
-         <JFXTextField alignment="CENTER" disable="true" editable="false" layoutX="88.0" layoutY="22.0" prefHeight="31.0" prefWidth="197.0" promptText="Editar Usuario" style="-fx-background-color: ffffff;">
+        </Button>
+        <Button fx:id="showE" layoutX="310.0" layoutY="172.0" mnemonicParsing="false" onMouseClicked="#OnBtnShowEClicked" prefHeight="32.0" prefWidth="149.0" text="Ver Evento">
             <font>
-               <Font size="15.0" />
+                <Font size="16.0" />
             </font>
-         </JFXTextField>
-      </children>
-   </Pane>
-   <Pane fx:id="DeleteU" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <children>
-         <JFXButton layoutX="150.0" layoutY="226.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="72.0" style="-fx-background-color: c6c6c6;" text="Eliminar" />
-         <JFXListView layoutX="42.0" layoutY="53.0" prefHeight="152.0" prefWidth="288.0" />
-      </children>
-   </Pane>
-   <Pane fx:id="PaneR" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <Button layoutX="19.0" layoutY="60.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="157.0" text="Listar eventos realizados" />
-      <Button layoutX="198.0" layoutY="60.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="157.0" text="Listar eventos futuros" />
-      <Button layoutX="19.0" layoutY="137.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="157.0" text="Listar eventos cancelados" />
-      <Button layoutX="188.0" layoutY="137.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="178.0" text="Ingreso generado por fecha" />
-      <Button layoutX="110.0" layoutY="196.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="157.0" text="Ver Perfil del usuario" />
-      <Button fx:id="BtnR" layoutX="110.0" layoutY="255.0" mnemonicParsing="false" onMouseClicked="#OnBtnBackMenuClicked" prefHeight="35.0" prefWidth="157.0" text="Regresar a Menú Principal" />
-   </Pane>
+        </Button>
+        <Button fx:id="backM" layoutX="208.0" layoutY="247.0" mnemonicParsing="false" onMouseClicked="#OnBtnBackMenuClicked3" prefHeight="32.0" prefWidth="149.0" text="Regresar al menu">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Button>
+      <Button fx:id="createEv1" disable="true" layoutX="188.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#OnBtnCreateEventClicked" prefHeight="35.0" prefWidth="189.0" style="-fx-background-color: ffffff;" text="Administrar Eventos">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+    </Pane>
+    <Pane fx:id="createE" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <JFXTextField fx:id="IdEvent" layoutX="20.0" layoutY="89.0" promptText="ID Evento" style="-fx-background-color: #b8b5ff;" />
+        <JFXTextField fx:id="TitleE" layoutX="387.0" layoutY="89.0" promptText="Titulo del Evento" style="-fx-background-color: #b8b5ff;" />
+        <JFXTextField fx:id="DescripE" alignment="CENTER" layoutX="190.0" layoutY="89.0" prefHeight="25.0" prefWidth="171.0" promptText="Descripción del Evento" style="-fx-background-color: #b8b5ff;" />
+        <JFXTextField fx:id="AmountE" layoutX="20.0" layoutY="138.0" promptText="Monto de Renta" style="-fx-background-color: #b8b5ff;" />
+        <JFXComboBox fx:id="TypeD" layoutX="101.0" layoutY="189.0" prefHeight="25.0" prefWidth="108.0" promptText="Tipo Deporte" style="-fx-background-color: #b8b5ff;" />
+        <JFXComboBox fx:id="TypeM" layoutX="326.0" layoutY="189.0" prefHeight="25.0" prefWidth="108.0" promptText="Tipo Musica" style="-fx-background-color: #b8b5ff;" />
+        <JFXTextField fx:id="Team1" layoutX="88.0" layoutY="240.0" promptText="Nombre Equipo 1" style="-fx-background-color: #b8b5ff;" />
+        <JFXTextField fx:id="Team2" layoutX="88.0" layoutY="285.0" promptText="Nombre Equipo 2" style="-fx-background-color: #b8b5ff;" />
+        <ComboBox fx:id="TypeE" layoutX="201.0" layoutY="137.0" prefWidth="150.0" promptText="Tipo de Evento" style="-fx-background-color: #b8b5ff;" />
+        <DatePicker fx:id="DateE" layoutX="380.0" layoutY="137.0" prefHeight="28.0" prefWidth="149.0" promptText="Fecha del Evento" style="-fx-background-color: #b8b5ff;" />
+        <JFXButton fx:id="RegE" layoutX="319.0" layoutY="253.0" mnemonicParsing="false" onMouseClicked="#OnBtnCreateEventClicked2" prefHeight="38.0" prefWidth="122.0" style="-fx-background-color: c6c6c6;" text="Registrar" />
+      <JFXTextField fx:id="IdEvent1" alignment="CENTER" disable="true" editable="false" layoutX="176.0" layoutY="28.0" prefHeight="40.0" prefWidth="213.0" promptText="ID Evento" style="-fx-background-color: ffffff;" text="Formulario de Registro de Evento" />
+    </Pane>
+    <Pane fx:id="DeleteE" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <children>
+            <JFXTextField fx:id="idDelete" alignment="CENTER" layoutX="194.0" layoutY="145.0" prefHeight="35.0" prefWidth="178.0" promptText="Ingrese Codigo del Evento" style="-fx-background-color: #b8b5ff;" />
+            <JFXTextField fx:id="searchE" alignment="CENTER" disable="true" editable="false" layoutX="157.0" layoutY="58.0" prefHeight="40.0" prefWidth="252.0" promptText="Eliminar Evento" style="-fx-background-color: ffffff;">
+                <font>
+                    <Font size="19.0" />
+                </font>
+            </JFXTextField>
+            <JFXButton fx:id="eventDelete" layoutX="232.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#OnBtnDeleteEClicked2" prefHeight="35.0" prefWidth="102.0" style="-fx-background-color: ffffff;" text="Eliminar">
+                <font>
+                    <Font size="16.0" />
+                </font>
+            </JFXButton>
+        </children>
+    </Pane>
+    <Pane fx:id="EditE" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <children>
+            <JFXTextField fx:id="txtE" alignment="CENTER" layoutX="170.0" layoutY="31.0" prefHeight="31.0" prefWidth="225.0" promptText="Ingrese el Codigo del Evento" style="-fx-background-color: #b8b5ff;" />
+            <JFXButton fx:id="eventEdit" layoutX="184.0" layoutY="78.0" mnemonicParsing="false" onMouseClicked="#OnBtnEditShowClicked" prefHeight="31.0" prefWidth="79.0" style="-fx-background-color: c6c6c6;" text="Buscar" />
+         <JFXButton fx:id="update" layoutX="300.0" layoutY="78.0" mnemonicParsing="false" onMouseClicked="#editEvent" prefHeight="32.0" prefWidth="72.0" style="-fx-background-color: c6c6c6;" text="Actualizar" />
+         <JFXTextField fx:id="editT" layoutX="36.0" layoutY="183.0" promptText="Titulo" style="-fx-background-color: #b8b5ff;" />
+         <JFXTextField fx:id="editD" layoutX="215.0" layoutY="183.0" promptText="Descripción" style="-fx-background-color: #b8b5ff;" />
+         <JFXTextField fx:id="editM" layoutX="36.0" layoutY="222.0" promptText="Monto" style="-fx-background-color: #b8b5ff;" />
+         <JFXTextField fx:id="editT1" layoutX="215.0" layoutY="222.0" promptText="Nombre Equipo 1" style="-fx-background-color: #b8b5ff;" />
+         <JFXTextField fx:id="editT2" layoutX="372.0" layoutY="222.0" promptText="Nombre Equipo 2" style="-fx-background-color: #b8b5ff;" />
+         <JFXTextField fx:id="aggIntM" layoutX="36.0" layoutY="264.0" promptText="Integrantes Banda" style="-fx-background-color: #b8b5ff;" />
+         <JFXTextField fx:id="aggP1" layoutX="215.0" layoutY="264.0" promptText="Nombre player equipo 1" style="-fx-background-color: #b8b5ff;" />
+         <JFXTextField fx:id="aggP2" layoutX="372.0" layoutY="264.0" promptText="Nombre player equipo 2" style="-fx-background-color: #b8b5ff;" />
+         <JFXTextField fx:id="aggP" layoutX="36.0" layoutY="302.0" promptText="Personas Convertidas" style="-fx-background-color: #b8b5ff;" />
+         <JFXTextField layoutX="215.0" layoutY="302.0" style="-fx-background-color: #b8b5ff;" />
+         <JFXTextField layoutX="372.0" layoutY="302.0" style="-fx-background-color: #b8b5ff;" />
+         <ListView fx:id="editShow" layoutX="20.0" layoutY="128.0" prefHeight="38.0" prefWidth="531.0" />
+         <DatePicker fx:id="newD" layoutX="364.0" layoutY="183.0" prefHeight="25.0" prefWidth="150.0" promptText="Fecha nueva" />
+         <JFXButton fx:id="editBack" alignment="CENTER" layoutX="461.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#OnBtneditBackClicked" prefHeight="38.0" prefWidth="72.0" style="-fx-background-color: c6c6c6;" text="Back" />
+        </children>
+    </Pane>
+    <Pane fx:id="ShowE" layoutY="-6.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-6.0">
+        <children>
+         <JFXTextField alignment="CENTER" disable="true" editable="false" layoutX="177.0" layoutY="14.0" prefHeight="35.0" prefWidth="213.0" promptText="Mostrar Eventos Creados" style="-fx-background-color: ffffff;" />
+            <JFXTextField fx:id="IdSearch" alignment="CENTER" layoutX="195.0" layoutY="67.0" prefHeight="31.0" prefWidth="178.0" promptText="Ingrese el Codigo del Evento" style="-fx-background-color: #b8b5ff;" />
+            <JFXButton fx:id="eventS" layoutX="237.0" layoutY="115.0" mnemonicParsing="false" onMouseClicked="#OnBtnShowEClicked2" prefHeight="38.0" prefWidth="92.0" style="-fx-background-color: c6c6c6;" text="Buscar" />
+         <ListView fx:id="eShow" layoutX="12.0" layoutY="162.0" prefHeight="183.0" prefWidth="542.0" />
+         <JFXButton fx:id="mostrarBack" layoutX="451.0" layoutY="13.0" mnemonicParsing="false" onMouseClicked="#OnBtnmostrarBackClicked" prefHeight="38.0" prefWidth="92.0" style="-fx-background-color: c6c6c6;" text="Back" />
+        </children>
+    </Pane>
+    <Pane fx:id="PaneU" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Button fx:id="btn_log" layoutX="94.0" layoutY="120.0" mnemonicParsing="false" onMouseClicked="#OnBtnRegisterClicked" prefHeight="32.0" prefWidth="149.0" text="Crear Usuario">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Button>
+        <Button fx:id="btn_log3" layoutX="324.0" layoutY="120.0" mnemonicParsing="false" onMouseClicked="#OnBtnEditUClicked" prefHeight="32.0" prefWidth="149.0" text="Editar Usuario">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Button>
+        <Button fx:id="btn_log31" layoutX="209.0" layoutY="181.0" mnemonicParsing="false" onMouseClicked="#OnBtnDeleteUClicked" prefHeight="32.0" prefWidth="149.0" text="Borrar Usuario">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Button>
+        <Button fx:id="btn_log4" layoutX="209.0" layoutY="255.0" mnemonicParsing="false" onMouseClicked="#OnBtnBackMenuClicked2" prefHeight="32.0" prefWidth="149.0" text="Regresar al menu">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Button>
+      <Button fx:id="btn_log5" disable="true" layoutX="194.0" layoutY="43.0" mnemonicParsing="false" onMouseClicked="#OnBtnRegisterClicked" prefHeight="35.0" prefWidth="178.0" style="-fx-background-color: ffffff;" text="Administrar Usuarios">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+    </Pane>
+    <Pane fx:id="EditU" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <children>
+            <JFXButton layoutX="185.0" layoutY="119.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="79.0" style="-fx-background-color: c6c6c6;" text="Buscar" />
+            <JFXTextField alignment="CENTER" layoutX="199.0" layoutY="78.0" promptText="Ingrese el username" style="-fx-background-color: #b8b5ff;">
+                <font>
+                    <Font size="15.0" />
+                </font>
+            </JFXTextField>
+            <JFXTextField alignment="CENTER" disable="true" editable="false" layoutX="185.0" layoutY="29.0" prefHeight="31.0" prefWidth="197.0" promptText="Editar Usuario" style="-fx-background-color: ffffff;">
+                <font>
+                    <Font size="15.0" />
+                </font>
+            </JFXTextField>
+         <TableView layoutX="7.0" layoutY="164.0" prefHeight="200.0" prefWidth="552.0">
+           <columns>
+             <TableColumn prefWidth="75.0" text="C1" />
+             <TableColumn prefWidth="75.0" text="C2" />
+           </columns>
+         </TableView>
+         <JFXButton layoutX="303.0" layoutY="119.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="79.0" style="-fx-background-color: c6c6c6;" text="Actualizar" />
+        </children>
+    </Pane>
+    <Pane fx:id="DeleteU" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <children>
+            <JFXButton layoutX="229.0" layoutY="282.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="108.0" style="-fx-background-color: c6c6c6;" text="Eliminar" />
+            <JFXListView layoutX="94.0" layoutY="113.0" prefHeight="152.0" prefWidth="377.0" />
+         <JFXButton disable="true" layoutX="184.0" layoutY="27.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="197.0" style="-fx-background-color: ffffff;" text="Usuarios" />
+        </children>
+    </Pane>
+    <Pane fx:id="PaneR" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Button layoutX="82.0" layoutY="80.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="157.0" text="Listar eventos realizados" />
+        <Button layoutX="319.0" layoutY="80.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="178.0" text="Listar eventos futuros" />
+        <Button layoutX="82.0" layoutY="155.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="157.0" text="Listar eventos cancelados" />
+        <Button layoutX="319.0" layoutY="155.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="178.0" text="Ingreso generado por fecha" />
+        <Button layoutX="198.0" layoutY="217.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="157.0" text="Ver Perfil del usuario" />
+        <Button fx:id="BtnR" layoutX="198.0" layoutY="281.0" mnemonicParsing="false" onMouseClicked="#OnBtnBackMenuClicked" prefHeight="35.0" prefWidth="157.0" text="Regresar a Menú Principal" />
+      <Button disable="true" layoutX="182.0" layoutY="14.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="189.0" style="-fx-background-color: ffffff;" text="Reportes" />
+    </Pane>
 </AnchorPane>
