@@ -6,7 +6,7 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="378.0" prefWidth="565.0" style="-fx-background-color: #141b29;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.test.HelloController">
-    <Pane fx:id="paneLog" prefHeight="361.0" prefWidth="377.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <Pane fx:id="paneLog" prefHeight="361.0" prefWidth="377.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Button fx:id="btn_log2" layoutX="506.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#OnBtnExitClicked" prefHeight="25.0" prefWidth="39.0" text="Exit" />
         <TextField alignment="CENTER" disable="true" editable="false" layoutX="170.0" layoutY="56.0" promptText="Inicie Sesión">
             <font>
@@ -178,31 +178,48 @@
     </Pane>
     <Pane fx:id="EditU" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <children>
-            <JFXButton layoutX="185.0" layoutY="119.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="79.0" style="-fx-background-color: c6c6c6;" text="Buscar" />
-            <JFXTextField alignment="CENTER" layoutX="199.0" layoutY="78.0" promptText="Ingrese el username" style="-fx-background-color: #b8b5ff;">
+            <JFXButton fx:id="searchU" layoutX="185.0" layoutY="119.0" mnemonicParsing="false" onMouseClicked="#OnBtnsearchUClicked" prefHeight="32.0" prefWidth="79.0" style="-fx-background-color: c6c6c6;" text="Buscar" />
+            <JFXTextField fx:id="userForS" alignment="CENTER" layoutX="199.0" layoutY="78.0" promptText="Ingrese el username" style="-fx-background-color: #b8b5ff;">
                 <font>
                     <Font size="15.0" />
                 </font>
             </JFXTextField>
-            <JFXTextField alignment="CENTER" disable="true" editable="false" layoutX="185.0" layoutY="29.0" prefHeight="31.0" prefWidth="197.0" promptText="Editar Usuario" style="-fx-background-color: ffffff;">
+            <JFXTextField alignment="CENTER" disable="true" editable="false" layoutX="179.0" layoutY="20.0" prefHeight="40.0" prefWidth="209.0" promptText="Editar Usuario" style="-fx-background-color: ffffff;">
                 <font>
                     <Font size="15.0" />
                 </font>
             </JFXTextField>
-         <TableView layoutX="7.0" layoutY="164.0" prefHeight="200.0" prefWidth="552.0">
-           <columns>
-             <TableColumn prefWidth="75.0" text="C1" />
-             <TableColumn prefWidth="75.0" text="C2" />
-           </columns>
-         </TableView>
-         <JFXButton layoutX="303.0" layoutY="119.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="79.0" style="-fx-background-color: c6c6c6;" text="Actualizar" />
+         <JFXButton fx:id="updateU" layoutX="303.0" layoutY="119.0" mnemonicParsing="false" onMouseClicked="#OnBtnupdateUClicked" prefHeight="32.0" prefWidth="79.0" style="-fx-background-color: c6c6c6;" text="Actualizar" />
+         <JFXTextField fx:id="newName" alignment="CENTER" layoutX="94.0" layoutY="174.0" promptText="Nombre Completo" style="-fx-background-color: #b8b5ff;">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </JFXTextField>
+         <JFXTextField fx:id="newUser" alignment="CENTER" layoutX="298.0" layoutY="174.0" promptText="Ingrese Nuevo Username" style="-fx-background-color: #b8b5ff;">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </JFXTextField>
+         <JFXTextField fx:id="newPass" alignment="CENTER" layoutX="94.0" layoutY="233.0" promptText="Nueva Contraseña" style="-fx-background-color: #b8b5ff;">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </JFXTextField>
+         <JFXTextField fx:id="newAge" alignment="CENTER" layoutX="298.0" layoutY="233.0" promptText="Ingrese la edad" style="-fx-background-color: #b8b5ff;">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </JFXTextField>
+         <JFXListView fx:id="userShow" layoutX="94.0" layoutY="285.0" prefHeight="79.0" prefWidth="377.0" />
+         <JFXButton fx:id="updateU1" layoutX="450.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#OnBtnupdateUClicked" prefHeight="32.0" prefWidth="79.0" style="-fx-background-color: c6c6c6;" text="Actualizar" />
         </children>
     </Pane>
-    <Pane fx:id="DeleteU" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <Pane fx:id="DeleteU" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <children>
-            <JFXButton layoutX="229.0" layoutY="282.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="108.0" style="-fx-background-color: c6c6c6;" text="Eliminar" />
-            <JFXListView layoutX="94.0" layoutY="113.0" prefHeight="152.0" prefWidth="377.0" />
+            <JFXButton fx:id="deleteU" layoutX="229.0" layoutY="296.0" mnemonicParsing="false" onMouseClicked="#OnBtndeleteUClicked" prefHeight="40.0" prefWidth="108.0" style="-fx-background-color: c6c6c6;" text="Eliminar" />
+            <JFXListView fx:id="deleteUL" layoutX="95.0" layoutY="130.0" prefHeight="152.0" prefWidth="377.0" />
          <JFXButton disable="true" layoutX="184.0" layoutY="27.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="197.0" style="-fx-background-color: ffffff;" text="Usuarios" />
+         <JFXTextField fx:id="txtUserD" layoutX="194.0" layoutY="88.0" prefHeight="28.0" prefWidth="178.0" promptText="Nombre de Usuario" style="-fx-background-color: ffffff;" />
         </children>
     </Pane>
     <Pane fx:id="PaneR" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

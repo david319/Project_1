@@ -21,6 +21,14 @@ public class User {
         return username;
     }
 
+    public void setUserName(String user) {
+        this.username = user;
+    }
+
+    public void setPass(String pass) {
+        this.password = pass;
+    }
+
     public String getPass() {
         return password;
     }
@@ -37,8 +45,16 @@ public class User {
         this.nameC = nameC;
     }
 
+    public String getName(){
+        return nameC;
+    }
+
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public int getAge(){
+        return age;
     }
 
     public static class UserContents extends User {

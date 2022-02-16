@@ -1,5 +1,6 @@
 package com.example.test;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.NumberValidator;
@@ -16,8 +17,6 @@ import java.util.Optional;
 import static com.example.test.Events.*;
 import static com.example.test.Users.*;
 
-;
-
 public class HelloController extends Thread {
     public boolean reg = false;
     public boolean regE = false;
@@ -27,12 +26,14 @@ public class HelloController extends Thread {
     public JFXTextField userReg, nameReg, passReg, ageReg, IdSearch, idDelete, txtE;
     public JFXTextField IdEvent, TitleE, DescripE, AmountE, Team1, Team2;
     public JFXTextField editT, editD, editM, editT1, editT2, aggIntM, aggP, aggP1, aggP2;
+    public JFXTextField userForS, newName, newUser, newPass, newAge, txtUserD;
     public DatePicker DateE, newD;
-    public ListView<String> eShow;
-    public ListView<String> editShow;
+    public ListView<String> eShow, deleteUL;
+    public ListView<String> editShow, userShow;
     public Button BtnLog;
     public Pane paneLog, paneRegister, PaneE, createE, DeleteE, EditE, ShowE, PaneU;
     public Pane EditU, DeleteU, PaneR, startMenu;
+    public JFXButton searchU, updateU;
     public ComboBox<String> typeUser;
     public ComboBox<String> TypeE;
     public ComboBox<String> TypeD;
@@ -236,7 +237,7 @@ public class HelloController extends Thread {
         }
     }
 
-    public void editEvent(){
+    public void editEvent() {
         String id = txtE.getText();
         String title = editT.getText();
         String descrip = editE.getText();
@@ -356,28 +357,6 @@ public class HelloController extends Thread {
         EditE.setVisible(true);
     }
 
-
-
-
-    public void OnBtnEditEClicked2() {
-        String id = txtE.getText();
-        if (searchEvent(id, userLogin)) {
-            if (Objects.equals(userLogin, "admin")) {
-                eShow.getItems().setAll(String.valueOf(eventsA.toString()));
-                editShow.getItems().setAll(String.valueOf(eventsA.toString()));
-            } else if (Objects.equals(userLogin, "contenido")) {
-                eShow.getItems().setAll(String.valueOf(eventsC.toString()));
-                editShow.getItems().setAll(String.valueOf(eventsC.toString()));
-            }
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("El evento no existe");
-            alert.showAndWait();
-        }
-    }
-
     public void showE() {
         String id = IdSearch.getText();
         if (showEvents(id, userLogin)) {
@@ -420,10 +399,135 @@ public class HelloController extends Thread {
         EditU.setVisible(true);
     }
 
+    public void OnBtnsearchUClicked() {
+        searchU();
+    }
+
+    public void searchU() {
+        String user = userForS.getText();
+        for (User u : users) {
+            if (Objects.equals(u.getUser(), user)) {
+                userShow.getItems().setAll(String.valueOf(u.toString()));
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Error");
+                alert.setContentText("El usuario no existe");
+                alert.showAndWait();
+            }
+        }
+    }
+
+    public void OnBtnupdateUClicked() {
+        editU();
+    }
+
+    public void editU() {
+        String user = userForS.getText();
+        for (User u : users) {
+            if (Objects.equals(u.getUser(), user)) {
+                String name = newName.getText();
+                String User = newUser.getText();
+                String pass = newPass.getText();
+                int age = Integer.parseInt(newAge.getText());
+                if (newName.getText().isEmpty()) {
+                    name = u.getName();
+                } else if (newUser.getText().isEmpty()) {
+                    User = u.getUser();
+                } else if (newPass.getText().isEmpty()) {
+                    pass = u.getPass();
+                } else if (newAge.getText().isEmpty()) {
+                    age = u.getAge();
+                }
+                u.setName(name);
+                u.setUserName(User);
+                u.setPass(pass);
+                u.setAge(age);
+                userShow.getItems().setAll(String.valueOf(u.toString()));
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Informacion");
+                alert.setHeaderText("Informacion");
+                alert.setContentText("El usuario se ha modificado correctamente");
+                alert.showAndWait();
+                Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION);
+                alert2.setTitle("Confirmacion");
+                alert2.setHeaderText("Confirmacion");
+                alert2.setContentText("¿Desea volver al menu de usuarios?");
+                Optional<ButtonType> result = alert2.showAndWait();
+                if (result.get() == ButtonType.OK) {
+                    EditU.setVisible(false);
+                    PaneU.setVisible(true);
+                }
+            }
+        }
+    }
+
     public void OnBtnDeleteUClicked() {
+        for (User u : users) {
+            deleteUL.getItems().setAll(String.valueOf(u.toString()));
+        }
         PaneU.setVisible(false);
         DeleteU.setVisible(true);
     }
+
+    public void OnBtndeleteUClicked(){
+        deleteU();
+        for (User u : users) {
+            deleteUL.getItems().setAll(String.valueOf(u.toString()));
+        }
+    }
+
+    public void deleteU(){
+        String user = txtUserD.getText();
+        for (User u : users) {
+            if (Objects.equals(u.getUser(), "admin")) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Error");
+                alert.setContentText("No se puede eliminar el usuario administrador");
+                alert.showAndWait();
+                Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION);
+                alert2.setTitle("Confirmacion");
+                alert2.setHeaderText("Confirmacion");
+                alert2.setContentText("¿Desea volver al menu de usuarios?");
+                Optional<ButtonType> result = alert2.showAndWait();
+                if (result.get() == ButtonType.OK) {
+                    DeleteU.setVisible(false);
+                    PaneU.setVisible(true);
+                }
+            } else if (Objects.equals(u.getUser(), user)) {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Confirmacion");
+                alert.setHeaderText("Confirmacion");
+                alert.setContentText("¿Desea eliminar el usuario?");
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK) {
+                    users.remove(u);
+                    Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                    alert2.setTitle("Informacion");
+                    alert2.setHeaderText("Informacion");
+                    alert2.setContentText("El usuario se ha eliminado correctamente");
+                    alert2.showAndWait();
+                    Alert alert3 = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert3.setTitle("Confirmacion");
+                    alert3.setHeaderText("Confirmacion");
+                    alert3.setContentText("¿Desea volver al menu de usuarios?");
+                    Optional<ButtonType> result2 = alert3.showAndWait();
+                    if (result2.get() == ButtonType.OK) {
+                        DeleteU.setVisible(false);
+                        PaneU.setVisible(true);
+                    }
+                }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Error");
+                alert.setContentText("El usuario no existe");
+                alert.showAndWait();
+            }
+        }
+    }
+
 
     public void OnBtnReportsClicked() {
         startMenu.setVisible(false);
